@@ -1,8 +1,8 @@
 import './globals.css'
-import Header from '../components/Header'
-import FeaturedGrid from '../components/FeaturedGrid'
-import ArticleCard from '../components/ArticleCard'
-import Sidebar from '../components/Sidebar'
+import Header from './components/Header'
+import FeaturedGrid from './components/Featured'
+import ArticleCard from './components/ArticleCard'
+import Sidebar from './components/Sidebar'
 import React from 'react'
 
 const sampleArticles = [
