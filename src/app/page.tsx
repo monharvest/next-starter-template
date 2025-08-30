@@ -47,7 +47,7 @@ export default function Page(){
       </section>
 
       <footer className="footer">
-        © {new Date().getFullYear()} MonHarvest Magazine — Built with Next.js
+        © {new Date().getFullYear()} MonMagazine
       </footer>
     </main>
   )
