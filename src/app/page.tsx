@@ -1,88 +1,54 @@
-import Image from "next/image";
+import './globals.css'
+import Header from '../components/Header'
+import FeaturedGrid from '../components/FeaturedGrid'
+import ArticleCard from '../components/ArticleCard'
+import Sidebar from '../components/Sidebar'
+import React from 'react'
 
-export default function Home() {
+const sampleArticles = [
+  {title:"The Quiet Power of Local Cafés", excerpt:"How neighbourhood cafés build community and creativity.", image:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop", date:"Aug 8, 2025", author:"J. Diaz", category:"Culture"},
+  {title:"Designing for Slow Travel", excerpt:"Move slowly and see more — a designer’s approach to travel.", image:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop", date:"Aug 4, 2025", author:"A. Kumar", category:"Travel"},
+  {title:"Color Trends in 2025", excerpt:"A quick guide to the colors shaping interiors and product design.", image:"https://images.unsplash.com/photo-1509223197845-458d87318791?q=80&w=1200&auto=format&fit=crop", date:"Jul 28, 2025", author:"M. Lee", category:"Design"},
+  {title:"A Walkable City Guide", excerpt:"The neighborhoods that make walking a pleasure.", image:"https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=1200&auto=format&fit=crop", date:"Jul 21, 2025", author:"S. Park", category:"Travel"},
+  {title:"At-home Herb Gardens", excerpt:"Small windowsills that produce big flavors.", image:"https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop", date:"Jul 18, 2025", author:"L. Gomez", category:"Food"},
+  {title:"The Resurgence of Print", excerpt:"Why magazines still matter in a digital world.", image:"https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop", date:"Jul 10, 2025", author:"T. Nguyen", category:"Culture"},
+];
+
+export default function Page(){
+  const featured = sampleArticles.slice(0,3)
+  const more = sampleArticles.slice(3)
+  const popular = sampleArticles.slice(0,4)
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main>
+      <Header />
+      <section className="hero container" aria-label="Featured story">
+        <div className="hero-content">
+          <div className="eyebrow">Feature</div>
+          <h1>Why Slow Travel Is the New Luxury</h1>
+          <p>Rediscover places by lingering longer — the tips, routes, and spaces that reward patience.</p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      <FeaturedGrid items={featured} />
+
+      <section className="container main-grid" style={{alignItems:"start"}}>
+        <div>
+          {more.map((a, idx) => (
+            <div key={idx} style={{marginBottom:16}}>
+              <ArticleCard article={a}/>
+            </div>
+          ))}
+        </div>
+
+        <div>
+          <Sidebar popular={popular}/>
+        </div>
+      </section>
+
+      <footer className="footer">
+        © {new Date().getFullYear()} MonHarvest Magazine — Built with Next.js
       </footer>
-    </div>
-  );
+    </main>
+  )
 }
