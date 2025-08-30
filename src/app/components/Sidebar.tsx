@@ -1,16 +1,22 @@
 import React from "react";
 
-export default function Sidebar({popular}:{popular:any[]}) {
+type PopularItem = {
+  title: string;
+  image: string;
+  date: string;
+};
+
+export default function Sidebar({ popular }: { popular: PopularItem[] }) {
   return (
     <aside className="sidebar">
       <div className="card">
         <h4>Popular</h4>
         {popular.map((p, i) => (
           <div className="popular-item" key={i}>
-            <img src={p.image} alt={p.title}/>
+            <img src={p.image} alt={p.title} />
             <div>
               <div className="title">{p.title}</div>
-              <div style={{fontSize:13,color:"var(--muted)"}}>{p.date}</div>
+              <div style={{ fontSize: 13, color: "var(--muted)" }}>{p.date}</div>
             </div>
           </div>
         ))}
@@ -25,7 +31,7 @@ export default function Sidebar({popular}:{popular:any[]}) {
 
       <div className="card">
         <h4>Categories</h4>
-        <ul style={{paddingLeft:16, color:"var(--muted)"}}>
+        <ul style={{ paddingLeft: 16, color: "var(--muted)" }}>
           <li>Culture</li>
           <li>Design</li>
           <li>Travel</li>
@@ -33,5 +39,5 @@ export default function Sidebar({popular}:{popular:any[]}) {
         </ul>
       </div>
     </aside>
-  )
+  );
 }
