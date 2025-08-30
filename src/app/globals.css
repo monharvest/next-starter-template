@@ -60,7 +60,7 @@ body{
 /* Hero */
 .hero{
   display:flex;
-  align-items:flex-end;
+  align-items:center;
   gap:28px;
   padding:44px 28px;
   margin: 10px 0 28px;
